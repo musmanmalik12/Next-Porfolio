@@ -58,7 +58,7 @@ const useTypingEffect = (paused: boolean = false) => {
   const [text, setText] = useState('');
   const [cmdIndex, setCmdIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
-  const frame = useRef<ReturnType<typeof setTimeout>>(null);
+  const frame = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const cmd = COMMANDS[cmdIndex];
