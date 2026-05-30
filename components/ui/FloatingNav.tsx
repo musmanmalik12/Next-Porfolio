@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
@@ -19,60 +20,59 @@ export const FloatingNav = ({
 
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (current) => {
-    if (typeof current === "number") {
-      // Detect active section by finding which one is most in view
-      const sections = ["about", "projects", "experience", "links", "contact"];
-      let maxVisibility = 0;
-      let activeSection = "";
+  useMotionValueEvent(scrollY, "change", () => {
+    const sections = ["about", "projects", "experience", "links", "contact"];
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-          
-          // Calculate how much of the element is visible in viewport
-          const top = Math.max(0, rect.top);
-          const bottom = Math.min(viewportHeight, rect.bottom);
-          const visibility = Math.max(0, bottom - top);
+    let maxVisibility = 0;
+    let currentActive = "";
 
-          // If this element is more visible than others, mark it as active
-          if (visibility > maxVisibility) {
-            maxVisibility = visibility;
-            activeSection = section;
-          }
-        }
-      }
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (!element) continue;
 
-      if (activeSection) {
-        setActiveSection(activeSection);
+      const rect = element.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      const top = Math.max(0, rect.top);
+      const bottom = Math.min(viewportHeight, rect.bottom);
+      const visibility = Math.max(0, bottom - top);
+
+      if (visibility > maxVisibility) {
+        maxVisibility = visibility;
+        currentActive = section;
       }
     }
+
+    if (currentActive) setActiveSection(currentActive);
   });
 
   const navItemVariants = {
     rest: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.05,
       transition: { type: "spring", stiffness: 400, damping: 10 },
     },
   };
 
   return (
-    <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-[5000] w-full flex justify-center pt-4 sm:pt-6 px-3 sm:px-4">
-      {/* Floating Pill Navbar */}
-      <div className={cn(
-        "flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full backdrop-blur-2xl bg-slate-900/70 border border-slate-700/50 shadow-lg hover:border-slate-600/70 transition-all duration-300",
-        "hover:bg-slate-900/80 hover:shadow-indigo-500/20",
-        className
-      )}>
-        {navItems.map((navItem: any, idx: number) => {
-          const isActive = activeSection === navItem.link.substring(1);
-          
+    <nav className="fixed top-0 left-1/2 -translate-x-1/2 z-[5000] w-full flex justify-center pt-4 sm:pt-6 px-3 sm:px-4">
+      <div
+        className={cn(
+          "flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5",
+          "rounded-full backdrop-blur-2xl backdrop-saturate-150",
+          "bg-slate-900/70 border border-slate-700/50",
+          "shadow-lg hover:border-slate-600/70 transition-all duration-300",
+          "hover:bg-slate-900/80",
+          className
+        )}
+      >
+        {navItems.map((navItem, idx) => {
+          const sectionName = navItem.link.replace("/", "");
+          const isActive = activeSection === sectionName;
+
           return (
             <motion.div
-              key={`nav-${idx}`}
+              key={idx}
               variants={navItemVariants}
               initial="rest"
               whileHover="hover"
@@ -81,16 +81,20 @@ export const FloatingNav = ({
               <Link
                 href={navItem.link}
                 className={cn(
-                  "relative px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap",
-                  isActive
-                    ? "text-indigo-300"
-                    : "text-slate-400 hover:text-slate-200"
+                  "relative px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg",
+                  "text-[11px] sm:text-sm font-medium leading-none",
+                  "flex items-center gap-1.5 whitespace-nowrap transition-all duration-300",
+                  isActive ? "text-indigo-300" : "text-slate-400 hover:text-slate-200"
                 )}
+                style={{ lineHeight: 1 }}
               >
                 {navItem.icon && <span className="text-sm">{navItem.icon}</span>}
-                <span className="hidden sm:inline">{navItem.name}</span>
-                
-                {/* Active indicator underline */}
+
+                {/* FIX: text now always visible */}
+                <span className="text-[11px] sm:text-sm whitespace-nowrap leading-none">
+                  {navItem.name}
+                </span>
+
                 {isActive && (
                   <motion.div
                     layoutId="active-underline"
@@ -106,4 +110,3 @@ export const FloatingNav = ({
     </nav>
   );
 };
-

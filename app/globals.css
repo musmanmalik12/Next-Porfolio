@@ -28,6 +28,15 @@
   }
 }
 
+  /* Enforce font-family using next/font local variables for consistent rendering */
+  body {
+    font-family: var(--font-geist-sans);
+  }
+
+  code, pre, kbd, samp, .font-mono {
+    font-family: var(--font-geist-mono);
+  }
+
 /* Animation Keyframes */
 @layer base {
   @keyframes fade-in {

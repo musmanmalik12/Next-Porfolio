@@ -269,7 +269,7 @@ export const Hero = () => {
         variants={container}
         initial="hidden"
         animate="visible"
-        className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center"
       >
 
         {/* Name */}
