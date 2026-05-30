@@ -326,7 +326,7 @@ export const Hero = () => {
         {/* CTA buttons */}
         <motion.div variants={item} className="flex flex-col sm:flex-row justify-center gap-3 mb-12 px-2 sm:px-0">
           <motion.a
-            href="mailto:usman@example.com"
+            href="mailto:muhammadusman.ceme@gmail.com"
             onClick={handleHireMe}
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.97 }}
