@@ -3,25 +3,23 @@
 import { navItems } from "@/data";
 
 import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
-import Footer from "@/components/Footer";
-import Clients from "@/components/Clients";
-import Approach from "@/components/Approach";
-import Experience from "@/components/Experience";
+import SkillsArchitecture from "@/components/SkillsArchitecture";
 import RecentProjects from "@/components/RecentProjects";
+import ProfessionalLinks from "@/components/ProfessionalLinks";
+import Experience from "@/components/Experience";
+import Approach from "@/components/Approach";
+import Footer from "@/components/Footer";
 import { FloatingNav } from "@/components/ui/FloatingNav";
-
-//issue in globe and canvas reveal effect -  they use three js
 
 const Home = () => {
   return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto sm:px-10 px-5 overflow-clip">
-      <div className="max-w-7xl w-full">
+    <main className="relative bg-slate-50 dark:bg-slate-950 flex justify-center items-center flex-col mx-auto overflow-clip transition-colors duration-300">
+      <div className="w-full">
         <FloatingNav navItems={navItems} />
         <Hero />
-        <Grid />
+        <SkillsArchitecture />
         <RecentProjects />
-        <Clients />
+        <ProfessionalLinks />
         <Experience />
         <Approach />
         <Footer />

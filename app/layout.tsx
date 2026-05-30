@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "./provider";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +15,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Usman's Portfolio",
-  description: "Minimalistic Next Portfolio",
+  title: "Muhammad Usman - Senior Software Engineer",
+  description: "Senior Software Engineer specializing in backend architecture, DevOps, and AI automation systems. Building scalable production systems.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -27,16 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-hidden`}
       >
-         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+        {children}
       </body>
     </html>
   );

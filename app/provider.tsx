@@ -1,9 +1,2 @@
-"use client"
-
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
-
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
-}
+// This file is kept for future provider patterns but currently unused
+// Dark mode is enforced via the 'dark' class in layout.tsx

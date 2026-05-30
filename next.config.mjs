@@ -3,6 +3,9 @@ import {withSentryConfig} from '@sentry/nextjs';
 
 const nextConfig = {
     output: 'export',
+    images: {
+      unoptimized: true, // Enable for static export
+    },
     eslint: {
       ignoreDuringBuilds: true,
     },

@@ -15,14 +15,14 @@ const MagicButton = ({
 }) => {
   return (
     <button
-      className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-[1px] focus:outline-none md:w-60 md:mt-10"
+      className={`relative inline-flex h-10 sm:h-12 overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950 transition-all duration-300 group ${otherClasses || 'px-6 sm:px-8'}`}
       onClick={handleClick}
     >
       <span
-        className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"
+        className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-indigo-700 group-hover:shadow-lg group-hover:shadow-indigo-500/40 transition-shadow duration-300"
       />
       <span
-        className={`inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-7 text-sm font-medium text-white backdrop-blur-3xl gap-2 ${otherClasses}`}
+        className="relative inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg px-5 sm:px-7 text-xs sm:text-sm font-semibold gap-2 bg-slate-950 text-indigo-400 hover:text-indigo-300 transition-all duration-300 group-hover:-translate-y-0.5 active:translate-y-0"
       >
         {position === 'left' && icon}
         {title}
