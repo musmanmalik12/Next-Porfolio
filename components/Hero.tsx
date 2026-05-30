@@ -272,14 +272,6 @@ export const Hero = () => {
         className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center"
       >
 
-        {/* Available badge */}
-        <motion.div variants={item} className="flex justify-center mb-6">
-          <span className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/25 rounded-full px-4 py-1.5 text-[12px] text-blue-400 font-medium tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-            Available for new projects
-          </span>
-        </motion.div>
-
         {/* Name */}
         <motion.p variants={item} className="text-[13px] tracking-[0.2em] uppercase text-slate-500 font-medium mb-5">
           Muhammad Usman
@@ -298,34 +290,8 @@ export const Hero = () => {
     opacity: 0.95,
   }}
 >
-  Backend Engineer
+  Senior Software Engineer
 </span>
-          <span
-            className="block font-semibold mb-3 sm:mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-[1.3]"
-            style={{
-              background: 'linear-gradient(135deg, #2ecb8f 0%, #06a8b8 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              paddingBottom: '2px',
-              opacity: 0.93,
-            }}
-          >
-            DevOps Engineer
-          </span>
-          <span
-            className="block font-medium text-base sm:text-lg md:text-xl lg:text-2xl tracking-tight"
-            style={{
-              background: 'linear-gradient(135deg, #ec9103 0%, #f068ad 60%, #9f47e1 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              overflow: 'visible',
-              opacity: 0.92,
-            }}
-          >
-            AI Automation Engineer
-          </span>
         </motion.div>
 
         {/* Tech chips */}
@@ -337,7 +303,7 @@ export const Hero = () => {
 
         {/* Tagline */}
         <motion.p variants={item} className="text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed mb-8 max-w-xl mx-auto px-2 sm:px-0">
-          Building scalable backend systems, automating cloud infrastructure, and architecting intelligent AI workflows for production workloads.
+      Building scalable backend systems, automating cloud infrastructure, and shipping AI automation workflows that run at production scale.
         </motion.p>
 
         {/* Terminal */}
@@ -402,29 +368,6 @@ export const Hero = () => {
               +92 309 5259950
             </a>
           </div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          variants={item}
-          className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-14 pt-10 border-t border-slate-800/60"
-          style={{ maxWidth: '500px', margin: '0 auto' }}
-        >
-          <Stat
-            value="70+"
-            label="Projects Delivered"
-            gradient="linear-gradient(135deg,#60a5fa,#818cf8)"
-          />
-          <Stat
-            value="6+"
-            label="Years Experience"
-            gradient="linear-gradient(135deg,#2ecb8f,#06a8b8)"
-          />
-          <Stat
-            value="20+"
-            label="Industries Served"
-            gradient="linear-gradient(135deg,#ec9103,#f068ad)"
-          />
         </motion.div>
 
       </motion.div>
