@@ -138,7 +138,7 @@ export const Hero = () => {
 
   const handleHireMe = () => {
     triggerConfetti();
-    window.location.href = 'mailto:usman@example.com';
+    window.location.href = 'mailto:muhammadusman.ceme@gmail.com';
   };
 
   const container = {
